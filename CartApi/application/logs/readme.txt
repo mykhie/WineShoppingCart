@@ -1,0 +1,1 @@
+logs by the application go in this folder
