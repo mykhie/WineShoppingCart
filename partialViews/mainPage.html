@@ -3,7 +3,7 @@
     <!------------------main apge header----------------------->
     <div class="title-div-main">
         <div class="col-lg-2 col-md-2 row  col-xs-12 img-responsive pull-left">
-            <img src="images/logo.png" height="" style="padding-bottom: 10px;height:130px;width:100%"
+            <img src="images/wine-logo.png" height="" style="padding-bottom: 10px;height:130px;width:100%"
                  class="pull-right col-md-10 img-responsive"/>
         </div>
         <div class="col-lg-10 col-md-10 col-xs-12 additionalHeader">
@@ -118,22 +118,22 @@
                         <div class="col-md-12 bottleDetails">
 
                             <div class="col-md-6 pull-left bottleleft bottle col-xs-6 col-sm-6">
-                                <span class="para">Bottle <b class="parax">${{items.price}}</b></span>
+                                <span class="para">Bottle <br><b class="parax">${{items.price}}</b></span>
 
                                 <div class="col-md-12" style="margin-left: 0px;padding:0px;">
-                                    <div class="col-md-1 pull-left" style="padding: 0px;margin-right: 3px; ">
-                                        <input type="text" class="inputQty" ng-model="items.itemPieceQty"></div>
-                                    <div class="col-md-9 pull-right paraqty col-xs-6 col-sm-6">QTY</div>
+                                    <div class="col-md-12 col-md-6 pull-left" style="padding: 0px;margin-right: 3px; ">
+                                        <input type="text" class="inputQty" ng-model="items.itemPieceQty"><span class="" style="color:#cccccc"> QTY</span></div>
+                                    <!--<div class="col-md-9 pull-right paraqty col-xs-6 col-sm-6">QTY</div>-->
                                 </div>
                             </div>
                             <div class="col-md-6 pull-left bottleright bottle col-xs-6 col-sm-6">
                                 <span class="para">Case <b class="parax">${{items.casePrice}}</b></span>
 
                                 <div class="col-md-12" style="margin-left: 0px;padding:0px;">
-                                    <div class="col-md-2 pull-left" style="padding: 0px;margin: 0px; ">
-                                        <input type="text" ng-model="items.itemCaseQty" class="inputQty">
+                                    <div class="col-md-6 pull-left" style="padding: 0px;margin: 0px; ">
+                                        <input type="text" ng-model="items.itemCaseQty" class="inputQty"><span class="" style="color:#cccccc"> QTY</span>
                                     </div>
-                                    <div class="col-md-8 text-right paraqty">QTY</div>
+                                    <!--<div class="col-md-8 text-right paraqty"></div>-->
                                 </div>
                             </div>
 
