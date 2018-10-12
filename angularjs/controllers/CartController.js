@@ -239,6 +239,15 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
         $scope.data.sort = column;
         $scope.data.filter = '';
     }
+
+    /**
+     *
+     * */
+    $scope.data.clickedWine = {};
+    $scope.data.generateClickedWine = function (wine) {
+        $scope.data.clickedWine = wine;
+    }
+
     /***
      *Checkout the customer,save details and show the order number
      * */
