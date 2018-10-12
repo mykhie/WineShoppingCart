@@ -31,7 +31,7 @@
 
         </div>
         <div class="col-md-8 text-center col-md-offset-2">
-            <div class="btn btn-danger col-md-5">
+            <div class="btn btn-danger col-md-5" ng-click="data.showDiv = 'shop'">
                 Cancel
             </div>
             <div class="btn  col-md-2">
@@ -50,6 +50,7 @@
             <h3>Customer Details..
                 <div class="pull-right smallBtn ec" ng-click="data.changeCustomerDet('cart')">
                     <i class="fa fa-shopping-cart"></i> Back to Cart</div>
+                <div class="pull-right smallBtn ec" ng-click="data.showDiv = 'shop'" style="margin-right: 3px;">Continue Shopping >>></div>&nbsp;
             </h3>
             <div class="alert alert-dismissible {{data.divColor}}"
                  ng-if="data.showStatus">{{data.responseMessage}}</div>

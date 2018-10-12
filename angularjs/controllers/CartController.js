@@ -163,6 +163,8 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
         $scope.data.cartTotal = 0;
         $scope.data.cartBottles = 0;
         $scope.data.cart = [];
+
+        localStorageService.set('cart',null);
     }
     /***
      * Remove item from the cart and update the relative
@@ -291,12 +293,13 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
                 $http
                     .post(url, cData)
                     .success(function (data) {
-                        alert(data);
+
                         $scope.data.responseMessage = data.message;
                         $scope.data.showStatus = true;
                         if (data.status == 1) {
                             $scope.data.customer = {};
                             $scope.data.emptyCart();
+                            localStorageService.set('cart', null);
                             $scope.data.divColor = 'alert-success';
                         } else {
                             $scope.data.divColor = 'alert-danger';
@@ -316,6 +319,19 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
         } catch (e) {
 
         }
+    }
+    $scope.data.returnIfAdded = function (id) {
+
+        if($scope.data.cart.length>0) {
+            for (var i = 0; i < $scope.data.cart.length; i++) {
+                if ($scope.data.cart[i]['id'] == id) {
+
+                    return true;
+
+                }
+            }
+        }
+        return false;
     }
 
 

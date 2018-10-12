@@ -26,10 +26,10 @@
         </div>
     </div>
     <!------------------!END----------------------->
-    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-xs-12 col-sm-12">
+    <div class="col-lg-10 col-lg-offset-2 col-md-10 col-md-offset-2 col-xs-12 col-sm-12">
         <i class="fa fa-flag"></i> For US customers please click here to order wine online
     </div>
-    <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 title-div text-left" style="padding-left: 0px;">
+    <div class="col-lg-2 col-lg-offset-10 col-md-2 col-md-offset-10 title-div text-left" style="padding-left: 0px;">
         The Club
     </div>
     <!---------------------------------------->
@@ -85,14 +85,17 @@
                                 </td>
                             </tr>
                             <tr ng-show="data.cartTotal > 0">
-                                <td class="col-md-9 totals text-left" width="85%">Total <font color="red">
-                                    ${{data.cartTotal}}</font></td>
+                                <td class="col-md-9 totals text-left" colspan="2">Total <font color="red">
+                                    ${{data.cartTotal.toLocaleString('en')}}</font></td>
                                 <td class=" pull-right" nowrap>
                                     <div class="smallBtn co pull-right" ng-click="data.showDiv = 'checkout'">Check Out
                                     </div>
                                 </td>
                             </tr>
                         </table>
+                        <div class="clearfix">
+                            &nbsp;
+                        </div>
                     </div>
                 </div>
             </div>
@@ -127,7 +130,7 @@
                                 <span class="para">Case <b class="parax">${{items.casePrice}}</b></span>
 
                                 <div class="col-md-12" style="margin-left: 0px;padding:0px;">
-                                    <div class="col-md-1 pull-left" style="padding: 0px;margin: 0px; ">
+                                    <div class="col-md-2 pull-left" style="padding: 0px;margin: 0px; ">
                                         <input type="text" ng-model="items.itemCaseQty" class="inputQty">
                                     </div>
                                     <div class="col-md-8 text-right paraqty">QTY</div>
@@ -152,7 +155,9 @@
 
                         <div class="smallBtn btn col-xs-12 col-sm-12 btn-xs addTocart  pull-right" style="width:48%"
                              ng-disabled="!items.itemCaseQty > 0 && !items.itemPieceQty > 0"
-                             ng-click="data.addToCart(items)">Add to cart
+                             ng-click="data.addToCart(items)">
+                            <span ng-show="!data.returnIfAdded(items.id)">Add to cart</span>
+                            <span ng-show="data.returnIfAdded(items.id)">Added</span>
                         </div>
 
     <!------------------!END----------------------->
