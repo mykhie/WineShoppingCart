@@ -1,9 +1,10 @@
-<div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1 col-xs-12 col-sm-12" ng-init="data.showDiv = 'shop'" >
+<div class="col-lg-10 col-md-10 col-lg-offset-1 col-md-offset-1 col-xs-12 col-sm-12" ng-init="data.showDiv = 'shop'">
 
     <!------------------main apge header----------------------->
-    <div class="title-div-main" >
+    <div class="title-div-main">
         <div class="col-lg-2 col-md-2 row  col-xs-12 img-responsive pull-left">
-            <img src="images/logo.png" height="" style="padding-bottom: 10px;height:130px;width:100%" class="pull-right col-md-10 img-responsive" />
+            <img src="images/logo.png" height="" style="padding-bottom: 10px;height:130px;width:100%"
+                 class="pull-right col-md-10 img-responsive"/>
         </div>
         <div class="col-lg-10 col-md-10 col-xs-12 additionalHeader">
             <div class="col-lg-3 col-md-3  col-xs-12  text-left" style="padding-left: 0px;">
@@ -25,8 +26,143 @@
         </div>
     </div>
     <!------------------!END----------------------->
+    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-xs-12 col-sm-12">
+        <i class="fa fa-flag"></i> For US customers please click here to order wine online
+    </div>
+    <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 title-div text-left" style="padding-left: 0px;">
+        The Club
+    </div>
+    <!---------------------------------------->
+
+    <div class="" ng-show="data.showDiv == 'shop'">
+        <div class="middle-div">
+            <div class="col-md-12" style="padding: 0px;">
+                <div class="col-md-4" style="padding: 0px;">
+                    <div class="pull-left showall text-center"><p>Show me</p></div>
+                    <div class="sa text-right pull-right"><p>
+                       <a href="" class="" ng-click="data.filter=''" style="color:lightslategrey"> Show all</a>
+                    </p></div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 show-me pull-left col-xs-12 col-sm-12" >
+
+                <div class="col-md-12 col-xs-12 col-sm-12">
+                    <div class="smallBtn btn-orderBy " ng-click="data.filterWines('white')">white</div>
+                    <div class="smallBtn btn-orderBy" ng-click="data.filterWines('red')">Red</div>
+                    <div class="smallBtn btn-orderBy" ng-click="data.orderBy('price')">Price</div>
+                    <div class="smallBtn btn-ob" ng-click="">Order By</div>
+                    <div class="smallBtn btn-orderBy" ng-click="data.orderBy('sparkling')">Sparking</div>
+                    <div class="smallBtn btn-orderBy" ng-click="data.orderBy('vintage')">Vintage</div>
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 row cart-info vcenter pull-right col-xs-12 col-sm-12">
+                <div class="col-md-3 left-border col-xs-12 col-sm-12">
+                    <div class="clear">&nbsp;</div>
+                    <p class="bottom-head"> Delivery Info</p>
+                </div>
+                <div class="col-md-3 left-border col-xs-12 col-sm-12">
+                    <h2><b>{{data.cartBottles}}</b></h2>Bottles
+                </div>
+                <div class="col-md-6 col-xs-12 col-sm-12">
+                    <div class="totalValue">
+                        <div ng-show="data.cartTotal <= 0">
+                            <h3><i class="fa fa-shopping-cart"></i> Cart(0)</h3>
+                        </div>
+                        <table style="padding-right: 0px;">
+                            <tr ng-repeat="cart in data.cart">
+                                <td class="col-md-10 totals text-left" width="85%">
+                                    {{cart.qty}} x {{cart.productName}} -{{cart.type}}
+                                </td>
+                                <td>
+                                    <a href="#" target="_self" ng-click="data.removeItem($index)">
+                                        <i class="fa fa-remove" style="color:gray"></i></a>
+                                </td>
+                                <td class=" pull-right">
+                                    <div ng-show="($index + 1) == data.cart.length" class="smallBtn ec pull-right"
+                                         ng-click="data.emptyCart()">EmptyCart
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr ng-show="data.cartTotal > 0">
+                                <td class="col-md-9 totals text-left" width="85%">Total <font color="red">
+                                    ${{data.cartTotal}}</font></td>
+                                <td class=" pull-right" nowrap>
+                                    <div class="smallBtn co pull-right" ng-click="data.showDiv = 'checkout'">Check Out
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12 col-md-12" ng-init="data.getProducts()">
+            <div class="col-md-4 {{data.returnClassBorder($index + 1)}} items col-xs-12 col-sm-12"
+                 ng-repeat="items in data.products| orderBy : data.sort | filter : data.filter">
+                <div class="col-lg-12 item-div">
+                    <div class="col-md-4 col-xs-12 col-sm-4 text-center bottle-image" style="padding-right: 30px;">
+                        <img src="{{items.imageUrl}}">
+                        <div class="col-md-12 img-below-bottle">
+
+                        </div>
+                    </div>
+                    <div class="col-md-8 rightSide col-xs-12 col-sm-8">
+                        <div class="col-md-12 bottle-title ">
+                            <div class="heading-title col-md-12 text-left">{{items.vintage}}</div>
+                            <div class="para col-md-12 text-left">{{items.productName}}</div>
+                        </div>
+                        <div class="col-md-12 bottleDetails">
+
+                            <div class="col-md-6 pull-left bottleleft bottle col-xs-6 col-sm-6">
+                                <font class="para">Bottle</font>
+                                <b class="parax">${{items.price}}</b>
+                                <div class="col-md-12" style="margin-left: 0px;padding:0px;">
+                                    <div class="col-md-1 pull-left" style="padding: 0px;margin-right: 3px; ">
+                                        <input type="text" class="inputQty" ng-model="items.itemPieceQty"></div>
+                                    <div class="col-md-9 pull-right paraqty col-xs-6 col-sm-6">QTY</div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pull-left bottleright bottle col-xs-6 col-sm-6">
+                                <font class="para">Case</font>
+                                <b class="parax">${{items.casePrice}}</b>
+                                <div class="col-md-12" style="margin-left: 0px;padding:0px;">
+                                    <div class="col-md-3 pull-left" style="padding: 0px;margin: 0px; ">
+                                        <input type="text" ng-model="items.itemCaseQty" class="inputQty">
+                                    </div>
+                                    <div class="col-md-9 text-right paraqty">QTY</div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12">
+                    <div class="col-md-4 col-xs-12 col-sm-4">
+
+                    </div>
+                    <div class="col-md-8 addCt">
+                        <div class="smallBtn btn col-xs-12 col-sm-12  pull-left ec pull-right" style="width:48%">
+                            Details
+                        </div>
 
 
+                        <div class="smallBtn btn col-xs-12 col-sm-12 btn-xs addTocart  pull-right" style="width:48%"
+                             ng-disabled="!items.itemCaseQty > 0 && !items.itemPieceQty > 0"
+                             ng-click="data.addToCart(items)">Add to cart
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12" ng-show="data.showDiv == 'checkout'">
+        <div ng-include="'partialViews/checkout.html'"></div>
+    </div>
 
 
 </div>
