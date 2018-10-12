@@ -6,7 +6,7 @@
  * @ng-route for routing //ng-cookies
  * temporariry hold user informations
  * */
-var cartModule = angular.module('cartModule', ['ngRoute', 'ngCookies']);
+var cartModule = angular.module('cartModule', ['ngRoute', 'LocalStorageModule']);
 
 /**
  * load different pages for different pages
@@ -29,11 +29,11 @@ cartModule
 /*
 * backend end point for the shopping cart
 * */
-cartModule.constant('serverURL', 'http://localhost:8081/WineShoppingCart/CartApi/index.php/Api_Rest/');
+cartModule.constant('serverURL', 'http://192.168.0.40:8081/Cart/CartApi/index.php/Api_Rest/');
 /**
  * declare controller to handle application log
  * */
-cartModule.controller('cartController', function ($scope, $rootScope, $http, serverURL) {
+cartModule.controller('cartController', function ($scope, $rootScope, $http, serverURL, localStorageService) {
 
     /**
      * $scope.data to hold model data for the application
@@ -126,10 +126,35 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
                 $scope.data.cartTotal = 0;
                 $scope.data.cartBottles = 0;
             }
+            var object = {
+                cartTotal: $scope.data.cartTotal,
+                cartBottles: $scope.data.cartBottles,
+                cart: $scope.data.cart
+            };
+
+            localStorageService.set('cart', object);
+
         } catch (e) {
             console.log(e)
         }
     }
+
+
+    /***
+     *
+     * **/
+
+    $rootScope.$on('$routeChangeSuccess', function () {
+
+        var cart = localStorageService.get('cart');
+
+        if (cart) {
+            $scope.data.cartTotal = cart.cartTotal;
+            $scope.data.cartBottles = cart.cartBottles;
+            $scope.data.cart = cart.cart;
+        }
+
+    });
 
     /***
      * Clear everything from the cart

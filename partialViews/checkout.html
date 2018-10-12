@@ -41,4 +41,53 @@
             </div>
         </div>
     </div>
+    <div class="col-md-12 well" ng-if="data.customerDet == 'customer'">
+        <div class="clearfix"></div>
+
+        <form role="form" class="col-md-8 col-md-offset-2" novalidate name="customer">
+            <h3>Customer Details..
+                <div class="pull-right smallBtn ec" ng-click="data.changeCustomerDet('cart')">
+                    <i class="fa fa-shopping-cart"></i> Back to Cart</div>
+            </h3>
+            <div class="alert alert-dismissible {{data.divColor}}"
+                 ng-if="data.showStatus">{{data.responseMessage}}</div>
+            <div class="form-group">
+                <input class="form-control "
+                       ng-model="data.customer.fullnames" required
+                       ng-class="{'has-error' : customer.fullnames.$invalid && !customer.fullnames.$pristine}"
+                       placeholder="Fullnames" name="fullnames" type="text" autofocus="">
+            </div>
+            <div class="form-group">
+                <input class="form-control" ng-model="data.customer.mobile" required ng-pattern="/^[0-9]{9,10}$/"
+                       ng-class="{'has-error'  : customer.mobile.$invalid && !customer.mobile.$pristine }"
+                       placeholder="Mobile" name="mobile" type="text" >
+            </div>
+            <div class="form-group">
+                <input class="form-control " ng-model="data.customer.address" required
+                       ng-class="{'has-error':customer.address.$invalid && !customer.address.$pristine}"
+                       placeholder="Address" name="address" type="text" >
+            </div>
+            <div class="form-group">
+                <input class="form-control " ng-model="data.customer.location" required
+                       ng-class="{'has-error':customer.location.$invalid && !customer.location.$pristine}"
+                       placeholder="Location" name="location" type="text" >
+            </div>
+            <div class="form-group">
+                <input class="form-control " ng-model="data.customer.idno" required
+                       ng-class="{'has-error':customer.idno.$invalid && !customer.idno.$pristine}"
+                       placeholder="ID Number" name="idno" type="text" >
+            </div>
+            <div class="form-group">
+                <input class="form-control " ng-model="data.customer.email" required
+                       ng-class="{'has-error':customer.email.$invalid && !customer.email.$pristine}"
+                       placeholder="Email" name="email" type="email" >
+            </div>
+
+            <!-- Change this to a button or input when using this as a form -->
+            <button class="btn btn-sm btn-primary col-xs-12" ng-disabled="customer.$invalid"
+                    ng-click="data.customerCheckOut(data.customer)"
+            >Check Out</button>
+
+        </form>
+    </div>
 </div>

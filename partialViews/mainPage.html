@@ -102,7 +102,7 @@
                  ng-repeat="items in data.products| orderBy : data.sort | filter : data.filter">
                 <div class="col-lg-12 item-div">
                     <div class="col-md-4 col-xs-12 col-sm-4 text-center bottle-image" style="padding-right: 30px;">
-                        <img src="{{items.imageUrl}}">
+                        <img src="{{items.imageUrl}}" class="">
                         <div class="col-md-12 img-below-bottle">
 
                         </div>
@@ -115,8 +115,8 @@
                         <div class="col-md-12 bottleDetails">
 
                             <div class="col-md-6 pull-left bottleleft bottle col-xs-6 col-sm-6">
-                                <span class="para">Bottle</span>
-                                <b class="parax">${{items.price}}</b>
+                                <span class="para">Bottle <b class="parax">${{items.price}}</b></span>
+
                                 <div class="col-md-12" style="margin-left: 0px;padding:0px;">
                                     <div class="col-md-1 pull-left" style="padding: 0px;margin-right: 3px; ">
                                         <input type="text" class="inputQty" ng-model="items.itemPieceQty"></div>
@@ -124,13 +124,13 @@
                                 </div>
                             </div>
                             <div class="col-md-6 pull-left bottleright bottle col-xs-6 col-sm-6">
-                                <font class="para">Case</font>
-                                <b class="parax">${{items.casePrice}}</b>
+                                <span class="para">Case <b class="parax">${{items.casePrice}}</b></span>
+
                                 <div class="col-md-12" style="margin-left: 0px;padding:0px;">
-                                    <div class="col-md-3 pull-left" style="padding: 0px;margin: 0px; ">
+                                    <div class="col-md-1 pull-left" style="padding: 0px;margin: 0px; ">
                                         <input type="text" ng-model="items.itemCaseQty" class="inputQty">
                                     </div>
-                                    <div class="col-md-9 text-right paraqty">QTY</div>
+                                    <div class="col-md-8 text-right paraqty">QTY</div>
                                 </div>
                             </div>
 
@@ -155,12 +155,6 @@
                              ng-click="data.addToCart(items)">Add to cart
                         </div>
 
-    <div class="col-lg-9 col-lg-offset-3 col-md-9 col-md-offset-3 col-xs-12 col-sm-12">
-        <i class="fa fa-flag"></i> For US customers please click here to order wine online
-    </div>
-    <div class="col-lg-1 col-lg-offset-11 col-md-1 col-md-offset-11 title-div text-left" style="padding-left: 0px;">
-        The Club
-    </div>
     <!------------------!END----------------------->
 
 
@@ -195,6 +189,9 @@
                         </div>
 
                         <div class="h3 col-md-12 text-left row" style="color: lightslategrey">{{data.clickedWine.productName}}</div>
+                        <div class="col-md-12 row"><span class="para"> <b>{{data.clickedWine.color}} wine</b> </span></div>
+
+
                         <div class="col-md-12 row"><span class="para">Bottle</span><b class="parax">${{data.clickedWine.price}}</b></div>
                         <div class="col-md-12 row"><span class="para">Case</span><b class="parax">${{data.clickedWine.casePrice}}</b></div>
 

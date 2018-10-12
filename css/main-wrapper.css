@@ -90,10 +90,11 @@ hr{
 
 }
 .img-below-bottle{
-    background: url("../images/c_b.png") ;
-    background-size: contain;
+    background: url(../images/c_b.png);
+    background-size: cover;
     background-repeat: no-repeat;
-    height: 20px;
+    height: 25px;
+    opacity: 0.6;
 }
 .show-me .btn{
     margin-left: 7px;
@@ -253,5 +254,11 @@ td .btn{
     height: 20px;
 }
 
+/*.img-center {*/
+    /*display: block;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*width: 80%;*/
+/*}*/
 
 
