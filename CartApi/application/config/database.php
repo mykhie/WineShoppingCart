@@ -48,10 +48,18 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = '';
-$db['default']['database'] = 'interviewcart';
+$dbString =(array)json_decode(file_get_contents('settings' . DIRECTORY_SEPARATOR . 'database' . DIRECTORY_SEPARATOR . 'database.json'));
+
+
+$db['default']['hostname'] = $dbString['hostname'];//'localhost';
+$db['default']['username'] = $dbString['username'];//'root';
+$db['default']['password'] =$dbString['password'];// '';
+
+
+$db['default']['database'] = $dbString['database'];//createDatabaseIfNotExists($db, $dbString['database']);
+
+
+
 $db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

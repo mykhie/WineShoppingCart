@@ -29,7 +29,7 @@ cartModule
 /*
 * backend end point for the shopping cart
 * */
-cartModule.constant('serverURL', 'http://192.168.0.40:8081/Cart/CartApi/index.php/Api_Rest/');
+cartModule.constant('serverURL', 'http://192.168.0.40:8081/Cart/CartApi/Api_Rest/');
 /**
  * declare controller to handle application log
  * */
