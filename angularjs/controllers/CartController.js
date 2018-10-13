@@ -109,13 +109,17 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
                 if (angular.isDefined(tempArray)) {
                     for (var i = 0; i < $scope.data.cart.length; i++) {
                         if ($scope.data.cart[i]['id'] == tempArray['id'] && $scope.data.cart[i]['type'] == tempArray['type']) {
+
                             $scope.data.cart[i]['qty'] += Number(tempArray['qty']);
                             $scope.data.cart[i]['total'] += Number(tempArray['total']);
+
+                            showNotification( tempArray['productName'] +" has been updated to "+$scope.data.cart[i]['qty'] +" "+tempArray['type']+"s",$scope.data.cart[i]);
                             existing = true;
                             break;
                         }
                     }
                     if (!existing) {
+                        showNotification(tempArray['productName']+" has been added , "+tempArray['qty'] +"bottle(s)",tempArray);
                         $scope.data.cart.push(tempArray);
                     }
                 }
@@ -170,7 +174,7 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
         $scope.data.cartTotal = 0;
         $scope.data.cartBottles = 0;
         $scope.data.cart = [];
-
+        showNotification("Cart has been cleared");
         localStorageService.set('cart', null);
     }
     /***
@@ -191,7 +195,8 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
 
                 }
             }
-            if (removed) {
+            if (removed){
+
                 if ($scope.data.cart.length > 0) {
                     pushToCartArray();
                 } else {
@@ -206,10 +211,33 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
         }
 
     }
+
+    /***
+     * Show notifications
+     * */
+    function showNotification(msg,item){
+
+        $.extend($.gritter.options, {
+            position: 'top-right', //
+            fade_in_speed: 'medium', //
+            fade_out_speed: 2000, //
+            time: 4000 //
+        });
+        $.gritter.add({
+            title: msg,
+
+
+            class_name: 'gritter-dark'
+
+        });
+    }
+
     /***
      *adding items to the shopping cart from the UI
      * */
     $scope.data.addToCart = function (product) {
+
+
 
         try {
             if (angular.isDefined(product)) {
@@ -247,6 +275,7 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
 
             }
         } catch (e) {
+            showNotification("An error occured,please try adding again");
             console.log(e);
         }
 

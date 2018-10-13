@@ -2,6 +2,6 @@
   "hostname":"localhost",
   "username":"root",
   "password":"",
-  "database":"interviewcart",
+  "database":"cart",
   "encryption":"false"
 }

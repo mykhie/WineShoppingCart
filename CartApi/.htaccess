@@ -1,3 +1,5 @@
+#.htaccess to remove the index.php from the url
+#restrict access to some folder by url access
 RewriteEngine on
 RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost [NC]
 RewriteCond %{HTTP_REFERER} !^http://(www\.)?localhost.*$ [NC]

@@ -157,7 +157,8 @@
                              ng-disabled="!items.itemCaseQty > 0 && !items.itemPieceQty > 0"
                              ng-click="data.addToCart(items)">
                             <span ng-show="!data.returnIfAdded(items.id)">Add to cart</span>
-                            <span ng-show="data.returnIfAdded(items.id)">Added</span>
+                            <span ng-show="data.returnIfAdded(items.id)">
+                               <i class="fa fa-check-circle"></i> Added</span>
                         </div>
 
     <!------------------!END----------------------->

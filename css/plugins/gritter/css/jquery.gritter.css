@@ -2,10 +2,9 @@
 #gritter-notice-wrapper {
 	position:fixed;
 	top:20px;
-	right:39%;
+	right:20px;
 	width:301px;
 	z-index:9999;
-	min-height: 100px;
 }
 #gritter-notice-wrapper.top-left {
     left: 20px;

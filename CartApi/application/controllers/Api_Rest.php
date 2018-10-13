@@ -10,6 +10,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require APPPATH . 'libraries/REST_Controller.php';
 
 
+/***
+*Api controller should extend our rest library to be able to use
+ * REST functionalities like return type,if POST,GET
+ */
+
+
 class Api_Rest extends REST_Controller
 {
     public function __construct()
@@ -64,7 +70,7 @@ class Api_Rest extends REST_Controller
             if (isset($customerArray) && sizeof($customerArray) > 0) {
                 $customerArray['orderNumber'] = strtoupper($this->commonutils->randomString(10));
                 $customerArray['status'] = 1;
-                $customerArray['dateCreated'] = time();
+                $customerArray['dateCreated'] =  date('Y-m-d h:i:s ');;
                 $customerArray['createdBy'] = 0;
                 $query = $this->Cart_model->insert_data($customerArray, 'cart_customers');
 
@@ -84,7 +90,7 @@ class Api_Rest extends REST_Controller
                             $cartArray['total'] = $indCart['total'];
                             $cartArray['price'] = $indCart['price'];
                             $cartArray['type'] = $indCart['type'];
-                            $cartArray['dateCreated'] = time();
+                            $cartArray['dateCreated'] =  date('Y-m-d h:i:s ');;
                             $cartArray['status'] = 1;
                             $cartArray['createdBy'] = 0;
                             $cartArray['orderNumber'] = $customerArray['orderNumber'];
