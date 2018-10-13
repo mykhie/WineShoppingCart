@@ -52,7 +52,7 @@
                     <div class="smallBtn btn-orderBy" ng-click="data.filterWines('red')">Red</div>
                     <div class="smallBtn btn-orderBy" ng-click="data.orderBy('price')">Price</div>
                     <div class="smallBtn btn-ob" ng-click="">Order By</div>
-                    <div class="smallBtn btn-orderBy" ng-click="data.orderBy('sparkling')">Sparking</div>
+                    <div class="smallBtn btn-orderBy" ng-click="data.orderBy('sparkling')">Sparkling</div>
                     <div class="smallBtn btn-orderBy" ng-click="data.orderBy('vintage')">Vintage</div>
                 </div>
             </div>
@@ -85,8 +85,8 @@
                                 </td>
                             </tr>
                             <tr ng-show="data.cartTotal > 0">
-                                <td class="col-md-9 totals text-left" colspan="2">Total <font color="red">
-                                    ${{data.cartTotal.toLocaleString('en')}}</font></td>
+                                <td class="col-md-9 totals text-left" colspan="2">Total <span style="color:red;">
+                                    ${{data.cartTotal.toLocaleString('en')}}</span></td>
                                 <td class=" pull-right" nowrap>
                                     <div class="smallBtn co pull-right" ng-click="data.showDiv = 'checkout'">Check Out
                                     </div>
@@ -113,7 +113,7 @@
                     <div class="col-md-8 rightSide col-xs-12 col-sm-8">
                         <div class="col-md-12 bottle-title ">
                             <div class="heading-title col-md-12 text-left">{{items.vintage}}</div>
-                            <div class="para col-md-12 text-left">{{items.productName}}</div>
+                            <div class="para col-md-12 text-left text-capitalize">{{items.productName}}</div>
                         </div>
                         <div class="col-md-12 bottleDetails">
 

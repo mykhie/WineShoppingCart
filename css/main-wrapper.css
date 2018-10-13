@@ -114,7 +114,7 @@ hr{
     width: 27%;
     float: left;
     margin:10px 5px ;
-    color: black !important;
+    color:  #808080 !important;
     text-align: center;
 }
 .btn-ob{
@@ -147,8 +147,8 @@ td .btn{
 
 }
 .smallBtn{
-    font-size: 10px; 
-    padding: 6px;
+    font-size: 14px;
+    padding: 8px;
     color:white;
     border-radius: 5px;
     cursor:pointer;
@@ -206,9 +206,10 @@ td .btn{
     max-height:42px;
 }
 .para{
-    color: #cccccc;
-    font-size: 16px; 
+    color: #b3b3b3;
+    font-size: 20px;
     padding: 0px;
+    text-transform: capitalize;
     margin-top: 0px;
 }
 .parax{

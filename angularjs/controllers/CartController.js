@@ -26,15 +26,19 @@ cartModule
             templateUrl: "partialViews/mainPage.html"
         })
     });
-/*
-* backend end point for the shopping cart
-* */
+
 cartModule.constant('serverURL', 'http://192.168.0.40:8081/Cart/CartApi/Api_Rest/');
 /**
  * declare controller to handle application log
  * */
-cartModule.controller('cartController', function ($scope, $rootScope, $http, serverURL, localStorageService) {
+cartModule.controller('cartController', function ($scope, $rootScope, $http, localStorageService) {
 
+
+    /***
+     * backend end point for the shopping cart
+     * */
+
+    var serverURL = BASE_URL;
     /**
      * $scope.data to hold model data for the application
      */
@@ -164,7 +168,7 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
         $scope.data.cartBottles = 0;
         $scope.data.cart = [];
 
-        localStorageService.set('cart',null);
+        localStorageService.set('cart', null);
     }
     /***
      * Remove item from the cart and update the relative
@@ -322,7 +326,7 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, ser
     }
     $scope.data.returnIfAdded = function (id) {
 
-        if($scope.data.cart.length>0) {
+        if ($scope.data.cart.length > 0) {
             for (var i = 0; i < $scope.data.cart.length; i++) {
                 if ($scope.data.cart[i]['id'] == id) {
 
