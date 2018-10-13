@@ -24,7 +24,7 @@ Please follow the below step to run to install
     ```
     >copy/transfer the folder to your favourite web server (for this case i used xampp),so copy it to xampp/htdocs/
  - **Configuring the API**
- inside the copies folder open CartApi/application/settings/database.json and change the database setting to match with your database configurations
+ inside the copied folder open CartApi/application/settings/database.json and change the database setting to match with your database configurations
       ```sh
     {
           "hostname":"localhost",
