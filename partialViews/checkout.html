@@ -4,7 +4,7 @@
             Check Out
             <div class="pull-right smallBtn ec" ng-click="data.showDiv = 'shop'">Continue Shopping >>></div>
         </h3>
-
+<div class="table-responsive">
         <table class="table ">
             <thead>
             <tr>
@@ -25,6 +25,7 @@
                 <td><button class="btn btn-sm btn-danger" ng-click="data.removeItem($index)">Remove</button></td>
             </tr>
         </table>
+    </div>
         <div class="col-md-12">
             <hr>
             <h3 class="text-right">Total : ${{data.cartTotal.toLocaleString('en')}}</h3>
