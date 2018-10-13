@@ -96,6 +96,9 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
 
     /**
      * add items to cart
+     * check the logic before an item is added ,
+     * example if an item already added,change the total and the qty
+     * change bottles quantity
      * */
     function pushToCartArray(tempArray) {
         try {
@@ -145,7 +148,7 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
 
 
     /***
-     *
+     *On Url change regenerate our cart with cached data
      * **/
 
     $rootScope.$on('$routeChangeSuccess', function () {
@@ -261,18 +264,29 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
         $scope.data.customerDet = div;
 
     }
+    /**
+     *Filter out the club by the supplied value
+     * */
+
     $scope.data.filter = ''
     $scope.data.filterWines = function (filt) {
         $scope.data.filter = filt;
     }
+
+    /**
+     *Default order by productname
+     * */
     $scope.data.sort = 'productName';
+    /**
+     *Sort the club depending on the click button
+     * */
     $scope.data.orderBy = function (column) {
         $scope.data.sort = column;
         $scope.data.filter = '';
     }
 
     /**
-     *
+     *Show more detail for the details button
      * */
     $scope.data.clickedWine = {};
     $scope.data.generateClickedWine = function (wine) {
@@ -324,6 +338,9 @@ cartModule.controller('cartController', function ($scope, $rootScope, $http, loc
 
         }
     }
+    /***
+     * change the add to cart label on the button once a user clicks the button to added
+     * */
     $scope.data.returnIfAdded = function (id) {
 
         if ($scope.data.cart.length > 0) {
