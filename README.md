@@ -34,15 +34,15 @@ Please follow the below step to run to install
           "encryption":"false"
         }
     ```
-    Now,inside the porject folder open database/cart.sql and run the script against your mysql database.
-    >that should create the database with 3 basic tables for out cart
+    Now,inside the project folder open CartApi/database/cart.sql and run the script against your mysql database.
+    >that should create the database with 3 basic tables for our cart
     
     **Thats all for the api**
  - **The Front End**
  Nothing much id done here,Incase no products are fetched,please check inside angularjs/config/config.js to check if its returning the right url.The assumption is,the api and the front end will reside inside the same folder,In a scenario this is no the case the base url can be changed from the config.json file
 - You can know access the shopping cart via 
      ```sh
-    127.0.0.1:[port]/cart
+    127.0.0.1:[port]/WineShoppingCart
     ```
 
     
